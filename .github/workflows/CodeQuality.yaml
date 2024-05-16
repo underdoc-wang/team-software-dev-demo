@@ -1,0 +1,22 @@
+name: Python Code Quality
+
+on: [push, pull_request]
+
+jobs:
+    flake8-lint:
+        runs-on: ubuntu-latest
+        name: Python Code Quality
+        steps:
+        - name: Check out source repository
+        uses: actions/checkout@v2
+
+        - name: Set up Python environment
+        uses: actions/setup-python@v2
+        with:
+            python-version: "3.x"
+
+        - name: flake8 Lint Check
+        uses: py-actions/flake8@v1
+        with:
+            path: "mycybergis"
+            args: "--ignore=E501,E722,F403,F405"
